@@ -26,6 +26,12 @@ class _ValueListenerTutorialState extends State<ValueListenerTutorial> {
   ValueNotifier<String?> _name = ValueNotifier<String?>(null);
 
   @override
+    void dispose() {
+      _name.dispose();
+      super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     Size custom = MediaQuery.of(context).size;
     return Scaffold(
@@ -39,7 +45,8 @@ class _ValueListenerTutorialState extends State<ValueListenerTutorial> {
                 child: SizedBox(),
               ),
               Expanded(
-                child: ValueListenableBuilder(
+                child: 
+                ValueListenableBuilder(
                   valueListenable: _name,
                   builder: (BuildContext context, String? value, child) {
                     return Text(
